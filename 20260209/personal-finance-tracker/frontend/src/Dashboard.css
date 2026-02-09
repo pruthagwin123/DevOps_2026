@@ -1,0 +1,410 @@
+/* ===== DASHBOARD CONTAINER ===== */
+.dashboard {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== DASHBOARD HEADER ===== */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 32px;
+  color: #333;
+  font-weight: 700;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* ===== REFRESH BUTTON ===== */
+.refresh-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  white-space: nowrap;
+}
+
+.refresh-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.refresh-button:active {
+  transform: translateY(0);
+}
+
+.refresh-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ===== STATS GRID ===== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+/* ===== STAT CARDS ===== */
+.stat-card {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 12px;
+  padding: 28px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Income Card Styling */
+.income-card {
+  background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.income-card::before {
+  background: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+/* Expense Card Styling */
+.expense-card {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.expense-card::before {
+  background: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
+}
+
+/* Balance Card Styling */
+.balance-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.balance-card::before {
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+.balance-card h2,
+.balance-card .stat-icon {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Card Icon */
+.stat-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+/* Card Title */
+.stat-card h2 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Card Value */
+.stat-value {
+  margin: 12px 0 0 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  font-family: 'Courier New', monospace;
+  letter-spacing: -1px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.balance-card .stat-value {
+  color: white;
+}
+
+/* Balance Status */
+.balance-status {
+  margin: 12px 0 0 0;
+  font-size: 12px;
+  opacity: 0.8;
+  font-weight: 600;
+}
+
+.balance-card .balance-status {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Balance Color Classes */
+.balance-positive .stat-value {
+  color: #22c55e;
+}
+
+.balance-negative .stat-value {
+  color: #ef4444;
+}
+
+.balance-card.balance-positive .stat-value {
+  color: #86efac;
+}
+
+.balance-card.balance-negative .stat-value {
+  color: #fecaca;
+}
+
+/* ===== LOADING STATE ===== */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  gap: 20px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f0f0f0;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-container p {
+  font-size: 18px;
+  color: #666;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ===== ERROR STATE ===== */
+.error-container {
+  background: #fee;
+  border: 2px solid #f87171;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+}
+
+.error-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.error-message {
+  font-size: 16px;
+  color: #991b1b;
+  margin: 0 0 20px 0;
+  line-height: 1.6;
+}
+
+.error-container p {
+  margin: 0 0 20px 0;
+}
+
+/* ===== RETRY BUTTON ===== */
+.retry-button {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-button:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.retry-button:active {
+  transform: translateY(0);
+}
+
+/* ===== DASHBOARD FOOTER ===== */
+.dashboard-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+  text-align: right;
+  font-size: 12px;
+  color: #999;
+}
+
+.dashboard-footer p {
+  margin: 0;
+}
+
+/* ===== FILTER SECTION ===== */
+.filter-section {
+  margin-top: 24px;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* ===== ERROR BANNER ===== */
+.error-banner {
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  color: #991b1b;
+  font-size: 14px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 24px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 24px;
+    width: 100%;
+  }
+
+  .refresh-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .stat-card {
+    min-height: 160px;
+    padding: 20px;
+  }
+
+  .stat-icon {
+    font-size: 28px;
+  }
+
+  .stat-card h2 {
+    font-size: 14px;
+  }
+
+  .stat-value {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 20px;
+  }
+
+  .stat-card {
+    padding: 16px;
+    min-height: 140px;
+  }
+
+  .stat-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .stat-card h2 {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .stat-value {
+    font-size: 20px;
+  }
+
+  .error-container {
+    padding: 24px;
+  }
+
+  .error-icon {
+    font-size: 36px;
+  }
+
+  .error-message {
+    font-size: 14px;
+  }
+
+  .retry-button {
+    width: 100%;
+  }
+}

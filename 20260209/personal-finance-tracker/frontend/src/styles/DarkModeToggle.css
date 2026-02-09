@@ -1,0 +1,76 @@
+/* DarkModeToggle.css */
+.dark-mode-toggle {
+  background: #f0f4ff;
+  color: #667eea;
+  border: 2px solid #e0e7ff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.dark-mode-toggle:hover {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background: #1a1a2e;
+  color: #e0e0e0;
+}
+
+body.dark-mode .dashboard,
+body.dark-mode .add-transaction-form,
+body.dark-mode .transaction-list,
+body.dark-mode .search-transactions,
+body.dark-mode .date-range-filter,
+body.dark-mode .budget-alert,
+body.dark-mode .expense-chart,
+body.dark-mode .monthly-trends {
+  background: #16213e;
+  color: #e0e0e0;
+}
+
+body.dark-mode .card-label,
+body.dark-mode .dashboard-title,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode label {
+  color: #e0e0e0;
+}
+
+body.dark-mode input,
+body.dark-mode select {
+  background: #0f3460;
+  color: #e0e0e0;
+  border-color: #533483;
+}
+
+body.dark-mode input:focus,
+body.dark-mode select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+body.dark-mode .transactions-table th {
+  background: #0f3460;
+  color: #a0a0a0;
+}
+
+body.dark-mode .transactions-table td {
+  border-bottom-color: #533483;
+}
+
+body.dark-mode .transaction-row:hover {
+  background: #0f3460;
+}
+
+body.dark-mode .app-header {
+  background: rgba(22, 33, 62, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
