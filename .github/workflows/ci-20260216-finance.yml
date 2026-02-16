@@ -19,7 +19,7 @@ jobs:
 
       - name: Install backend dependencies
         working-directory: 20260216/finance-ci-integration/backend
-        run: npm install
+        run: npm ci
 
       - name: Start backend server
         working-directory: 20260216/finance-ci-integration/backend
@@ -36,7 +36,7 @@ jobs:
         env:
           JEST_JUNIT_OUTPUT_DIR: test-reports
           JEST_JUNIT_OUTPUT_NAME: junit.xml
-        run: npx jest --runInBand --testPathPattern=tests
+        run: npm test
 
       - name: Upload integration test reports
         if: always()
