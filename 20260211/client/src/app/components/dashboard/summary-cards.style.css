@@ -1,0 +1,28 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.card-highlight {
+  background: linear-gradient(135deg, rgba(216, 122, 77, 0.15), var(--card));
+  border: 1px solid rgba(216, 122, 77, 0.35);
+}
+
+.card-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.card-value {
+  font-size: 1.4rem;
+  margin: 0;
+}

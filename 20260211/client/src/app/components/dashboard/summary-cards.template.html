@@ -1,0 +1,6 @@
+<section class="card-grid">
+  <div *ngFor="let item of items" [ngClass]="['card', item.highlight ? 'card-highlight' : '']">
+    <p class="card-label">{{ item.label }}</p>
+    <p class="card-value">${{ item.value | number:'1.2-2' }}</p>
+  </div>
+</section>

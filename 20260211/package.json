@@ -1,0 +1,8 @@
+{
+  "name": "personal-finance-tracker",
+  "private": true,
+  "scripts": {
+    "test": "npm --prefix server test",
+    "build": "npm --prefix client run build"
+  }
+}

@@ -1,0 +1,94 @@
+/* MonthlyTrends.css */
+.monthly-trends {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.monthly-trends h3 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.chart-container {
+  margin-bottom: 30px;
+}
+
+.chart-container h4 {
+  margin: 0 0 16px 0;
+  color: #666;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.trends-summary {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.summary-table thead {
+  background: #f9fafb;
+}
+
+.summary-table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #666;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.summary-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.summary-table tr:hover {
+  background: #f9fafb;
+}
+
+.income-text {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.expense-text {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.positive-text {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.negative-text {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .monthly-trends {
+    padding: 16px;
+  }
+  
+  .summary-table {
+    font-size: 12px;
+  }
+  
+  .summary-table th,
+  .summary-table td {
+    padding: 8px;
+  }
+}

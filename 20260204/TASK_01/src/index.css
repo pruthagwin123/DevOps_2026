@@ -1,0 +1,624 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  --transition: 0.3s ease;
+  --bg-start-light: #f8fafc;
+  --bg-end-light: #eef2ff;
+  --bg-start-dark: #071026;
+  --bg-end-dark: #041523;
+  --text-light: #0b1220;
+  --text-dark: #e6eef8;
+  --card-light: rgba(255,255,255,0.85);
+  --card-dark: rgba(7,16,32,0.6);
+  --accent: #7c3aed;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  transition: background var(--transition), color var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+body[data-theme='light'] {
+  background: linear-gradient(135deg, var(--bg-start-light), var(--bg-end-light));
+  color: var(--text-light);
+}
+
+body[data-theme='dark'] {
+  background: radial-gradient(circle at 10% 10%, rgba(14,38,76,0.6), rgba(2,6,23,1)), linear-gradient(135deg, var(--bg-start-dark), var(--bg-end-dark));
+  color: var(--text-dark);
+}
+
+.app-root { width: 100%; max-width: 980px; }
+
+.theme-card {
+  max-width: 900px;
+  width: 100%;
+  padding: 2.25rem;
+  border-radius: 14px;
+  transition: background var(--transition), box-shadow var(--transition), transform 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.theme-card.light {
+  background: var(--card-light);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.theme-card.dark {
+  background: var(--card-dark);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.8);
+}
+
+.theme-card:hover { transform: translateY(-6px); }
+
+/* Slight elevation for the toggle button depending on theme */
+.theme-toggle-btn.light { box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08); }
+.theme-toggle-btn.dark { box-shadow: 0 6px 22px rgba(2, 6, 23, 0.45); }
+
+.theme-header { display:flex; align-items:center; justify-content:space-between; gap: 1rem }
+.title { margin:0; font-size:1.5rem; letter-spacing:-0.2px }
+.subtitle { margin:0; opacity:0.8; font-size:0.9rem }
+
+.theme-toggle-btn {
+  border-radius: 10px;
+  padding: 0.45rem 0.6rem;
+  min-width:48px;
+  min-height:36px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.18s ease, background 0.18s ease;
+  background: transparent;
+}
+
+.theme-toggle-btn:hover { transform: scale(1.06) }
+
+.theme-toggle-btn .icon { display:inline-flex; transition: transform 0.5s cubic-bezier(.2,.9,.2,1), opacity 0.25s ease; }
+
+.theme-toggle-btn.light { color: #f9fafb }
+.theme-toggle-btn.dark { color: #ffd66b }
+
+.theme-toggle-btn.light .moon { opacity:1; transform: rotate(0deg); }
+.theme-toggle-btn.light .sun { opacity:0; transform: rotate(-25deg); }
+
+.theme-toggle-btn.dark .sun { opacity:1; transform: rotate(0deg); }
+.theme-toggle-btn.dark .moon { opacity:0; transform: rotate(25deg); }
+
+/* Child component removed - styles consolidated into ThemeToggle */
+
+hr { border: none; border-top: 1px solid rgba(0,0,0,0.06); margin: 1.25rem 0 }
+
+/* Tom Scene Wrapper */
+.tom-scene-wrapper {
+  position: relative;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+  min-height: 100vh;
+  padding: 30px 20px;
+  border-radius: 12px;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+body[data-theme='dark'] .tom-scene-wrapper {
+  background: transparent;
+}
+
+/* Bed Area */
+.bed-area {
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bed-frame {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 16px;
+  background: transparent;
+  box-shadow: none;
+  overflow: hidden;
+  display: none;
+}
+
+.bed-mattress {
+  position: absolute;
+  bottom: 20px;
+  left: 16px;
+  right: 16px;
+  height: 70px;
+  border-radius: 14px;
+  background: transparent;
+  box-shadow: none;
+  display: none;
+}
+
+.bed-pillow {
+  position: absolute;
+  bottom: 70px;
+  right: 32px;
+  width: 90px;
+  height: 35px;
+  border-radius: 14px;
+  background: transparent;
+  box-shadow: none;
+  display: none;
+}
+
+/* Tom Image Container */
+.tom-container {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  transition: all 0.5s ease;
+}
+
+.tom-container.dark {
+  bottom: auto;
+  left: auto;
+  transform: none;
+  z-index: 5;
+}
+
+.tom-container.light {
+  bottom: auto;
+  left: auto;
+  transform: none;
+}
+
+.tom-image {
+  width: 95%;
+  max-width: 900px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.2));
+  transition: all 0.4s ease;
+  user-select: none;
+}
+
+.tom-image.awake {
+  animation: none;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.2)) brightness(1.1);
+}
+
+@keyframes tomBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.05); }
+}
+
+.tom-image.sleeping {
+  animation: none;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  opacity: 1;
+  width: 95%;
+  max-width: 900px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  transform: translateX(0) translateY(0);
+}
+
+/* Blanket overlay for sleeping Tom */
+.tom-blanket {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 140px;
+  background: linear-gradient(135deg, #6ee7b7, #34d399);
+  border-radius: 12px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2), 0 6px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+  z-index: 3;
+  display: none;
+}
+
+/* Fake closed-eye overlay (subtle) */
+.tom-container.dark::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  top: 80px;
+  left: 70px;
+  transform: rotate(-90deg);
+}
+
+/* Dream bubbles */
+.dream-bubbles {
+  position: absolute;
+  top: -30px;
+  right: -10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 4;
+}
+
+.dream-bubbles .bubble {
+  color: #e5e7eb;
+  font-weight: 700;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  animation: dreamFloat 2s ease-in-out infinite;
+}
+
+.dream-bubbles .b1 { font-size: 0.9rem; opacity: 0.7; animation-delay: 0s; }
+.dream-bubbles .b2 { font-size: 1.1rem; opacity: 0.8; animation-delay: 0.3s; }
+.dream-bubbles .b3 { font-size: 1.3rem; opacity: 0.95; animation-delay: 0.6s; }
+
+@keyframes dreamFloat {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(-8px); opacity: 1; }
+}
+
+@keyframes tomRest {
+  0%, 100% { transform: translateY(0) rotateZ(0deg); }
+  50% { transform: translateY(-3px) rotateZ(-1deg); }
+}
+
+/* Lamp Button */
+.lamp-button {
+  background: transparent;
+  border: 3px solid #ffd700;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+  height: fit-content;
+}
+
+.lamp-button:hover {
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+}
+
+.lamp-button:active {
+  transform: scale(0.98);
+}
+
+.lamp-button.light {
+  border-color: #ffd700;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 215, 0, 0.1);
+}
+
+.lamp-button.light:hover {
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 8px 20px rgba(255, 215, 0, 0.5);
+}
+
+.lamp-button.dark {
+  border-color: #666;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: rgba(100, 100, 100, 0.1);
+}
+
+.lamp-button.dark:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.bed-lamp-image {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  transition: all 0.3s ease;
+  user-select: none;
+  pointer-events: none;
+}
+
+.lamp-button.light .bed-lamp-image {
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  transform: scale(1.05);
+}
+
+.lamp-button.dark .bed-lamp-image {
+  filter: brightness(0.7) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.lamp-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #4b5563;
+}
+
+.lamp-button.light .lamp-label {
+  color: #92400e;
+}
+
+.lamp-button.dark .lamp-label {
+  color: #e5e7eb;
+}
+
+.tom-character {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sleeping Tom (Dark Mode) */
+.tom-character.sleeping .tom-bed {
+  position: relative;
+  width: 180px;
+  height: 120px;
+  background: linear-gradient(135deg, #8b7355, #a0826d);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), inset 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  animation: bedSway 3s ease-in-out infinite;
+}
+
+@keyframes bedSway {
+  0%, 100% { transform: rotateZ(0deg); }
+  50% { transform: rotateZ(0.5deg); }
+}
+
+.tom-body.sleeping {
+  position: relative;
+  width: 120px;
+  height: 80px;
+  background: #ff6b9d;
+  border-radius: 60px;
+  transform: rotate(-15deg);
+  animation: sleep 2s ease-in-out infinite;
+}
+
+@keyframes sleep {
+  0%, 100% { transform: rotate(-15deg) translateY(0px); }
+  50% { transform: rotate(-15deg) translateY(-2px); }
+}
+
+.tom-body.sleeping .tom-head {
+  position: absolute;
+  top: -25px;
+  left: 20px;
+  width: 70px;
+  height: 65px;
+  background: #ff6b9d;
+  border-radius: 50%;
+  animation: headRest 2s ease-in-out infinite;
+}
+
+@keyframes headRest {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-2deg); }
+}
+
+.tom-body.sleeping .tom-head::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 8px;
+  background: #3d3d3d;
+  top: 50%;
+  left: 5px;
+  border-radius: 4px;
+  animation: eyesClosed 2s ease-in-out infinite;
+}
+
+@keyframes eyesClosed {
+  0%, 100% { height: 8px; }
+  50% { height: 3px; }
+}
+
+.tom-blanket {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 100px;
+  height: 60px;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  border-radius: 4px;
+  opacity: 0.8;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Awake Tom (Light Mode) */
+.tom-body.awake {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: #ff6b9d;
+  border-radius: 45px;
+  animation: bounce 0.6s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.tom-body.awake .tom-head {
+  position: absolute;
+  top: -20px;
+  left: 15px;
+  width: 70px;
+  height: 70px;
+  background: #ff6b9d;
+  border-radius: 50%;
+}
+
+.tom-ear {
+  position: absolute;
+  width: 20px;
+  height: 30px;
+  background: #ff6b9d;
+  border-radius: 50%;
+  top: -15px;
+}
+
+.tom-ear.left {
+  left: 10px;
+  transform: rotate(-25deg);
+  animation: earWiggle 1s ease-in-out infinite;
+}
+
+.tom-ear.right {
+  right: 10px;
+  transform: rotate(25deg);
+  animation: earWiggle 1s ease-in-out infinite 0.2s;
+}
+
+@keyframes earWiggle {
+  0%, 100% { transform: rotate(-25deg) scaleY(1); }
+  50% { transform: rotate(-25deg) scaleY(1.1); }
+}
+
+.tom-eye {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #3d3d3d;
+  border-radius: 50%;
+  top: 25px;
+}
+
+.tom-eye.left {
+  left: 15px;
+  animation: blink 3s ease-in-out infinite;
+}
+
+.tom-eye.right {
+  right: 15px;
+  animation: blink 3s ease-in-out infinite 0.1s;
+}
+
+@keyframes blink {
+  0%, 10%, 20%, 100% { transform: scaleY(1); }
+  5%, 15% { transform: scaleY(0.1); }
+}
+
+.tom-pupil {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  top: 28px;
+}
+
+.tom-pupil.left {
+  left: 18px;
+  animation: pupilMove 2s ease-in-out infinite;
+}
+
+.tom-pupil.right {
+  right: 18px;
+  animation: pupilMove 2s ease-in-out infinite;
+}
+
+@keyframes pupilMove {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(2px, -1px); }
+  50% { transform: translate(-2px, 2px); }
+  75% { transform: translate(1px, -2px); }
+}
+
+.tom-mouth {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 15px;
+  border: 2px solid #3d3d3d;
+  border-top: none;
+  border-radius: 0 0 15px 15px;
+}
+
+.tom-mouth.awake {
+  animation: mouthTalk 0.4s ease-in-out infinite;
+}
+
+.tom-mouth.sleeping {
+  width: 15px;
+  height: 8px;
+}
+
+@keyframes mouthTalk {
+  0%, 100% { height: 15px; }
+  50% { height: 20px; }
+}
+
+.tom-body-main {
+  position: absolute;
+  bottom: -30px;
+  left: 15px;
+  width: 70px;
+  height: 50px;
+  background: #ff6b9d;
+  border-radius: 30px 30px 15px 15px;
+  animation: bodyBounce 0.6s ease-in-out infinite;
+}
+
+@keyframes bodyBounce {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  50% { transform: translateY(-5px) scaleY(0.95); }
+}
+
+.tom-tail {
+  position: absolute;
+  bottom: -40px;
+  right: 5px;
+  width: 50px;
+  height: 15px;
+  background: #ff6b9d;
+  border-radius: 50%;
+  animation: tailWag 0.5s ease-in-out infinite;
+  transform-origin: left center;
+}
+
+@keyframes tailWag {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(20deg); }
+}
+
+@media (max-width: 640px) {
+  .theme-card { padding: 1rem }
+  .title { font-size: 1.25rem }
+  .tom-container {
+    min-height: 200px;
+  }
+  .tom-character {
+    width: 150px;
+    height: 150px;
+  }
+}

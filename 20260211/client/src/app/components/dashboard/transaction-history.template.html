@@ -1,0 +1,54 @@
+<section class="card history">
+  <div class="history-header">
+    <div>
+      <h3>Transaction History</h3>
+      <p class="muted">Latest activity, most recent first.</p>
+    </div>
+    <div class="history-totals">
+      <span class="pill income">Income ${{ getTotalIncome() | number:'1.2-2' }}</span>
+      <span class="pill expense">Spent ${{ getTotalExpense() | number:'1.2-2' }}</span>
+    </div>
+  </div>
+
+  <div class="filters">
+    <label>
+      Category
+      <select [(ngModel)]="filters.category" (change)="onFieldChange('category', $event)">
+        <option value="all">All</option>
+        <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+      </select>
+    </label>
+    <label>
+      Type
+      <select [(ngModel)]="filters.type" (change)="onFieldChange('type', $event)">
+        <option value="all">All</option>
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+    </label>
+    <label>
+      Month
+      <input type="month" [(ngModel)]="filters.month" (change)="onFieldChange('month', $event)" />
+    </label>
+    <label>
+      Search
+      <input type="text" placeholder="Search description" [(ngModel)]="filters.search" (change)="onFieldChange('search', $event)" />
+    </label>
+  </div>
+
+  <div class="history-list">
+    <p class="muted" *ngIf="transactions.length === 0">No transactions yet</p>
+    <div class="history-row" *ngFor="let tx of transactions">
+      <div>
+        <div class="history-title">
+          <span class="category-icon">{{ tx.category.slice(0, 1) }}</span>
+          <span>{{ tx.description || 'Untitled' }}</span>
+        </div>
+        <p class="muted">{{ tx.category }} · {{ tx.createdAt | date: 'short' }}</p>
+      </div>
+      <div [ngClass]="['amount', tx.type]">
+        <span>{{ getSign(tx) }}{{ tx.amount | number:'1.2-2' }}</span>
+      </div>
+    </div>
+  </div>
+</section>

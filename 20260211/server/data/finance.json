@@ -1,0 +1,61 @@
+{
+  "users": [
+    {
+      "username": "demo",
+      "pin": "1234",
+      "incomes": [],
+      "expenses": [],
+      "transactions": []
+    },
+    {
+      "username": "pruth",
+      "pin": "0000",
+      "incomes": [],
+      "expenses": [],
+      "transactions": []
+    },
+    {
+      "username": "sathya_ep",
+      "pin": "7777",
+      "incomes": [
+        {
+          "amount": 2000,
+          "category": "Salary",
+          "description": "",
+          "createdAt": "2026-02-11T11:05:27.856Z"
+        }
+      ],
+      "expenses": [
+        {
+          "amount": 999.98,
+          "category": "Rent",
+          "description": "ohh no",
+          "createdAt": "2026-02-11T11:05:55.068Z"
+        }
+      ],
+      "transactions": [
+        {
+          "type": "income",
+          "amount": 2000,
+          "category": "Salary",
+          "description": "",
+          "createdAt": "2026-02-11T11:05:27.856Z"
+        },
+        {
+          "type": "expense",
+          "amount": 999.98,
+          "category": "Rent",
+          "description": "ohh no",
+          "createdAt": "2026-02-11T11:05:55.068Z"
+        }
+      ]
+    },
+    {
+      "username": "sathya",
+      "pin": "7777",
+      "incomes": [],
+      "expenses": [],
+      "transactions": []
+    }
+  ]
+}

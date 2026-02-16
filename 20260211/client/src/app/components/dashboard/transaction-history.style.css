@@ -1,0 +1,100 @@
+.history {
+  display: grid;
+  gap: 16px;
+}
+
+.history-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.history-header h3 {
+  margin: 0 0 4px;
+}
+
+.history-totals {
+  display: flex;
+  gap: 10px;
+}
+
+.pill {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.pill.income {
+  background: rgb(227, 247, 237);
+  color: rgb(26, 114, 101);
+}
+
+.pill.expense {
+  background: rgb(253, 231, 228);
+  color: rgb(155, 59, 21);
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.filters label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.history-list {
+  display: grid;
+  gap: 12px;
+}
+
+.history-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgb(253, 251, 247);
+  border: 1px solid rgb(239, 228, 210);
+}
+
+.history-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.category-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(240, 231, 214);
+  font-weight: 700;
+  color: rgb(102, 88, 72);
+}
+
+.amount {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.amount.income {
+  color: rgb(26, 114, 101);
+}
+
+.amount.expense {
+  color: rgb(155, 59, 21);
+}
