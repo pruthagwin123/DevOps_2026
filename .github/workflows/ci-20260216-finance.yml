@@ -36,7 +36,7 @@ jobs:
         env:
           JEST_JUNIT_OUTPUT_DIR: test-reports
           JEST_JUNIT_OUTPUT_NAME: junit.xml
-        run: npm test
+        run: npx jest --runInBand --testPathPattern=tests
 
       - name: Upload integration test reports
         if: always()
