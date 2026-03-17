@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - SBEMS</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">SBEMS</div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+        <a href="/forecast">Forecast</a>
+        <a href="/buildings">Buildings</a>
+        <a href="/financial">Financial</a>
+        <a href="/contact">Contact</a>
+        <a href="/about">About</a>
+        <a href="#" data-logout>Logout</a>
+      </aside>
+
+      <main class="main">
+        <h2>Contact</h2>
+        <section class="panel">
+          <form id="contact-form" class="form-grid">
+            <div><label>Name</label><input id="name" required /></div>
+            <div><label>Email</label><input id="email" type="email" required /></div>
+            <div><label>Subject</label><input id="subject" required /></div>
+            <div><label>Message</label><textarea id="message" rows="5" required></textarea></div>
+            <button class="btn btn-primary" type="submit">Send Message</button>
+          </form>
+        </section>
+
+        <section class="charts-grid" style="margin-top:12px">
+          <div class="panel">
+            <h3>Team Info</h3>
+            <p class="muted">Smart Building Energy Lab</p>
+            <p class="muted">Email: support@sbes.local</p>
+            <p class="muted">Developer: Full Stack Research Simulation Team</p>
+          </div>
+          <div class="panel">
+            <h3>Location</h3>
+            <p class="muted">Map embed is disabled to avoid API key requirements.</p>
+            <a
+              class="btn btn-secondary"
+              href="https://maps.google.com/?q=Smart+Building+Lab"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View on Google Maps
+            </a>
+          </div>
+        </section>
+
+        <section class="panel" style="margin-top:12px">
+          <h3>Admin Inbox (Latest 10)</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Name</th><th>Email</th><th>Subject</th><th>Date</th></tr></thead>
+              <tbody id="admin-messages"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/public/js/auth.js"></script>
+    <script src="/public/js/ui.js"></script>
+    <script src="/public/js/contact.js"></script>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Building Energy Management</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <nav class="top-nav">
+        <div class="brand">SBEMS DWT-LSTM</div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#stats">Results</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <a href="/login">Login</a>
+          <a href="/register">Register</a>
+        </div>
+      </nav>
+
+      <main class="container">
+        <section class="hero" id="home">
+          <div>
+            <div class="badge">IEEE-Inspired Energy Intelligence</div>
+            <h1>Smart Building Energy Management with Simulated DWT-LSTM Forecasting</h1>
+            <p>
+              This full-stack platform simulates deep learning based building energy forecasting and scheduling,
+              combining demand prediction, distributed renewable generation, and cost-aware operation.
+            </p>
+            <div class="inline">
+              <a class="btn btn-primary" href="/login">Launch Dashboard</a>
+              <a class="btn btn-secondary" href="/register">Create Account</a>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Framework Snapshot</h3>
+            <p class="muted">DWT decomposition + LSTM forecasting + week-ahead scheduling + storage optimization.</p>
+            <ul>
+              <li>Forecast horizon: hourly / daily / weekly</li>
+              <li>Storage-aware dispatch with SDI monitoring</li>
+              <li>Tariff-sensitive operation planning</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="features" class="card-grid">
+          <article class="card">
+            <h3>Forecasting</h3>
+            <p class="muted">DWT-LSTM inspired multi-horizon energy prediction for demand, wind, and solar.</p>
+          </article>
+          <article class="card">
+            <h3>Scheduling</h3>
+            <p class="muted">Week-ahead scheduling logic to reduce peak import above 22.1918 kWh threshold.</p>
+          </article>
+          <article class="card">
+            <h3>Renewable Energy</h3>
+            <p class="muted">Distributed solar and wind contribution tracking against dynamic demand curves.</p>
+          </article>
+          <article class="card">
+            <h3>Cost Savings</h3>
+            <p class="muted">Compare scheduled and non-scheduled operation at dual tariff rates.</p>
+          </article>
+        </section>
+
+        <section id="stats" class="stats">
+          <div class="card">
+            <div class="muted">Grid Reduction</div>
+            <div class="stat-number" id="stat-grid">0%</div>
+          </div>
+          <div class="card">
+            <div class="muted">Cost Savings</div>
+            <div class="stat-number" id="stat-cost">0%</div>
+          </div>
+          <div class="card">
+            <div class="muted">Best MAPE (DWT-LSTM)</div>
+            <div class="stat-number" id="stat-mape">0%</div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="/public/js/landing.js"></script>
+  </body>
+</html>

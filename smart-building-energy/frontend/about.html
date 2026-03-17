@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - SBEMS</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">SBEMS</div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+        <a href="/forecast">Forecast</a>
+        <a href="/buildings">Buildings</a>
+        <a href="/financial">Financial</a>
+        <a href="/contact">Contact</a>
+        <a href="/about">About</a>
+        <a href="#" data-logout>Logout</a>
+      </aside>
+
+      <main class="main">
+        <h2>About This Project</h2>
+        <section class="panel">
+          <p>
+            This Smart Building Energy Management System is inspired by the IEEE paper
+            <strong>"Deep Learning in Energy Modeling: Application in Smart Buildings With Distributed Energy Generation"</strong>.
+          </p>
+          <blockquote class="card" style="margin: 12px 0">
+            Ghadi, Y., et al. "Deep Learning in Energy Modeling: Application in Smart Buildings With Distributed Energy
+            Generation." IEEE Access.
+          </blockquote>
+          <h3>Key Findings Simulated</h3>
+          <ul>
+            <li>Up to 84% grid import reduction</li>
+            <li>Up to 87% electricity cost savings with coordinated scheduling</li>
+            <li>DWT-LSTM achieved 3.63% MAPE and R2 of 0.99</li>
+          </ul>
+          <h3>Technology Stack</h3>
+          <ul>
+            <li>Frontend: HTML5, CSS3, Vanilla JavaScript, Chart.js</li>
+            <li>Backend: Node.js, Express.js</li>
+            <li>Database: MongoDB, Mongoose</li>
+            <li>Security: JWT authentication, bcrypt hashing</li>
+            <li>Data ingestion: Multer CSV upload pipeline</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <script src="/public/js/auth.js"></script>
+    <script src="/public/js/ui.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        attachLogout();
+        setActiveSidebar();
+      });
+    </script>
+  </body>
+</html>

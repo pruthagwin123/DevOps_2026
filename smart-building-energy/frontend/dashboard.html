@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - SBEMS</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">SBEMS</div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+        <a href="/forecast">Forecast</a>
+        <a href="/buildings">Buildings</a>
+        <a href="/financial">Financial</a>
+        <a href="/contact">Contact</a>
+        <a href="/about">About</a>
+        <a href="#" data-logout>Logout</a>
+      </aside>
+
+      <main class="main">
+        <h2>Main Dashboard</h2>
+        <div class="kpi-grid">
+          <div class="panel kpi"><div class="muted">Total Energy Demand</div><div class="value" id="kpi-demand">-</div></div>
+          <div class="panel kpi"><div class="muted">Solar Generation</div><div class="value" id="kpi-solar">-</div></div>
+          <div class="panel kpi"><div class="muted">Wind Generation</div><div class="value" id="kpi-wind">-</div></div>
+          <div class="panel kpi"><div class="muted">Grid Import</div><div class="value" id="kpi-grid">-</div></div>
+          <div class="panel kpi"><div class="muted">Storage Level</div><div class="value" id="kpi-storage">-</div></div>
+          <div class="panel kpi"><div class="muted">Electricity Cost</div><div class="value" id="kpi-cost">-</div></div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="panel"><h3>Real-Time Energy Monitor</h3><div style="height:280px"><canvas id="realtimeChart"></canvas></div></div>
+          <div class="panel">
+            <h3>Supply to Demand Index (SDI)</h3>
+            <div style="height:200px"><canvas id="sdiChart"></canvas></div>
+            <div class="muted">Current SDI: <strong id="sdi-value">0.00</strong></div>
+          </div>
+          <div class="panel"><h3>Energy Storage Level (Max 40.5 kWh)</h3><div style="height:240px"><canvas id="storageChart"></canvas></div></div>
+          <div class="panel"><h3>Electricity Cost Breakdown</h3><div style="height:240px"><canvas id="costChart"></canvas></div></div>
+        </div>
+
+        <section class="panel" style="margin-top:12px">
+          <h3>Scheduling Status</h3>
+          <div class="inline"><span class="muted">Peak threshold:</span> <strong id="threshold"></strong></div>
+          <div class="inline"><span class="muted">Peak days:</span> <strong id="peak-days"></strong></div>
+          <div class="inline"><span class="muted">Estimated saved:</span> <strong id="saved-kwh"></strong></div>
+          <label class="inline" style="margin-top:8px"><input id="strategy-toggle" type="checkbox" checked /> Saving strategy ON/OFF</label>
+        </section>
+      </main>
+    </div>
+
+    <script src="/public/js/auth.js"></script>
+    <script src="/public/js/ui.js"></script>
+    <script src="/public/js/charts.js"></script>
+    <script src="/public/js/dashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - SBEMS</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body>
+    <div class="auth-wrap">
+      <div class="card auth-card">
+        <h2>Create Account</h2>
+        <p class="muted">Register to start forecasting and scheduling workflows.</p>
+        <form id="register-form" class="form-grid">
+          <div>
+            <label>Name</label>
+            <input id="name" type="text" required />
+          </div>
+          <div>
+            <label>Email</label>
+            <input id="email" type="email" required />
+          </div>
+          <div>
+            <label>Password</label>
+            <input id="password" type="password" required minlength="6" />
+          </div>
+          <button class="btn btn-primary" type="submit">Register</button>
+          <a href="/login" class="muted">Already registered? Login</a>
+        </form>
+      </div>
+    </div>
+
+    <script src="/public/js/auth.js"></script>
+    <script src="/public/js/ui.js"></script>
+    <script>
+      document.getElementById("register-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const password = document.getElementById("password").value;
+        if (password.length < 6) return showToast("Password must be at least 6 chars", "error");
+
+        const payload = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          password
+        };
+
+        const res = await fetch("/api/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (!res.ok) return showToast(data.message || "Registration failed", "error");
+
+        setToken(data.token);
+        setUser(data.user);
+        location.href = "/dashboard";
+      });
+    </script>
+  </body>
+</html>

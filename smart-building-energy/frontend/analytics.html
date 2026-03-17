@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analytics - SBEMS</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">SBEMS</div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+        <a href="/forecast">Forecast</a>
+        <a href="/buildings">Buildings</a>
+        <a href="/financial">Financial</a>
+        <a href="/contact">Contact</a>
+        <a href="/about">About</a>
+        <a href="#" data-logout>Logout</a>
+      </aside>
+
+      <main class="main">
+        <h2>Analytics</h2>
+        <div class="kpi-grid">
+          <div class="panel kpi"><div class="muted">RMSE</div><div class="value" id="metric-rmse">-</div></div>
+          <div class="panel kpi"><div class="muted">MSE</div><div class="value" id="metric-mse">-</div></div>
+          <div class="panel kpi"><div class="muted">MAPE</div><div class="value" id="metric-mape">-</div></div>
+          <div class="panel kpi"><div class="muted">R2</div><div class="value" id="metric-r2">-</div></div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="panel"><h3>Annual Energy Demand & Supply (Figure 10-style)</h3><div style="height:280px"><canvas id="annualChart"></canvas></div></div>
+          <div class="panel"><h3>Hourly Average Energy (Figure 11-style)</h3><div style="height:280px"><canvas id="hourlyChart"></canvas></div></div>
+        </div>
+
+        <section class="panel" style="margin-top:12px">
+          <h3>Dataset Upload</h3>
+          <form id="upload-form" class="inline">
+            <input id="dataset" type="file" accept=".csv" required />
+            <button class="btn btn-primary" type="submit">Upload CSV</button>
+            <button class="btn btn-secondary" id="download-report" type="button">Download Report</button>
+          </form>
+        </section>
+
+        <section class="panel" style="margin-top:12px">
+          <h3>Month-wise Breakdown</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Month</th><th>Demand (kWh)</th><th>Solar (kWh)</th><th>Wind (kWh)</th></tr>
+              </thead>
+              <tbody id="monthly-table"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/public/js/auth.js"></script>
+    <script src="/public/js/ui.js"></script>
+    <script src="/public/js/charts.js"></script>
+    <script src="/public/js/analytics.js"></script>
+  </body>
+</html>

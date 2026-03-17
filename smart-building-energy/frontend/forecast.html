@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forecast - SBEMS</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">SBEMS</div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+        <a href="/forecast">Forecast</a>
+        <a href="/buildings">Buildings</a>
+        <a href="/financial">Financial</a>
+        <a href="/contact">Contact</a>
+        <a href="/about">About</a>
+        <a href="#" data-logout>Logout</a>
+      </aside>
+
+      <main class="main">
+        <h2>Forecast Simulation (DWT-LSTM)</h2>
+
+        <section class="panel">
+          <div class="form-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+            <div><label>Forecast Type</label><select id="forecast-type"><option value="wind">Wind Speed</option><option value="solar">Solar PV</option><option value="demand" selected>Building Demand</option></select></div>
+            <div><label>Horizon</label><select id="horizon"><option value="hourly">Hourly</option><option value="daily">Daily</option><option value="weekly">Weekly</option></select></div>
+            <div><label>Temperature (C)</label><input id="temperature" type="range" min="0" max="45" value="24" /></div>
+            <div><label>Cloud Cover (%)</label><input id="cloudCover" type="range" min="0" max="100" value="35" /></div>
+            <div><label>Wind Speed (m/s)</label><input id="windSpeed" type="range" min="0" max="20" value="6" /></div>
+          </div>
+        </section>
+
+        <section class="panel" style="margin-top:12px">
+          <h3>Forecast Output</h3>
+          <div style="height:320px"><canvas id="forecastChart"></canvas></div>
+        </section>
+
+        <section class="panel" style="margin-top:12px">
+          <h3>Model Performance (Table 6)</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Model</th><th>RMSE</th><th>MSE</th><th>MAPE</th><th>R2</th></tr></thead>
+              <tbody id="model-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/public/js/auth.js"></script>
+    <script src="/public/js/ui.js"></script>
+    <script src="/public/js/charts.js"></script>
+    <script src="/public/js/forecast.js"></script>
+  </body>
+</html>

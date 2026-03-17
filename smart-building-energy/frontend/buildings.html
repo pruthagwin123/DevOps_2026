@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buildings - SBEMS</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">SBEMS</div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+        <a href="/forecast">Forecast</a>
+        <a href="/buildings">Buildings</a>
+        <a href="/financial">Financial</a>
+        <a href="/contact">Contact</a>
+        <a href="/about">About</a>
+        <a href="#" data-logout>Logout</a>
+      </aside>
+
+      <main class="main">
+        <h2>Buildings</h2>
+        <section class="panel">
+          <h3>Add / Edit Building</h3>
+          <form id="building-form" class="form-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+            <input type="hidden" id="building-id" />
+            <div><label>House ID</label><input id="houseId" required /></div>
+            <div><label>House Type</label><input id="houseType" required /></div>
+            <div><label>Facing</label><input id="facing" required /></div>
+            <div><label>Region</label><input id="region" required /></div>
+            <div><label>HVAC Types (comma-separated)</label><input id="hvacTypes" required /></div>
+            <div><label>Coverage</label><input id="coverage" required /></div>
+            <button class="btn btn-primary" type="submit">Save Building</button>
+          </form>
+        </section>
+
+        <section class="card-grid" id="building-list" style="margin-top:12px"></section>
+      </main>
+    </div>
+
+    <script src="/public/js/auth.js"></script>
+    <script src="/public/js/ui.js"></script>
+    <script src="/public/js/charts.js"></script>
+    <script src="/public/js/buildings.js"></script>
+  </body>
+</html>
